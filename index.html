@@ -9,7 +9,8 @@
     function game() {
         let userPoints = 0; 
         let computerPoints = 0; 
-        for(i = 0; i < 5; i++) {
+        let totalGames = 0; 
+        while (computerPoints < 3 && userPoints < 3) {
             function computerPlay() {
                     const gameArray = ["rock", "paper", "scissors"];
                     const randomSelection = gameArray[Math.floor(Math.random() * gameArray.length)];
@@ -27,41 +28,49 @@
             function playRound(computerSelection, userSelection) {
                 if (userSelection == computerSelection) {
                     console.log("it's a tie!"); 
-                    // return "tie";
                 } else if (userSelection == "rock" && computerSelection == "paper") {
                     console.log("paper covers rock! you lose!");
-                    // return "computer wins";
                     computerPoints++; 
+                    totalGames++; 
                 } else if (userSelection == "rock" && computerSelection == "scissors") {
                     console.log("rock beats paper! you win!");
-                   //  return "user wins";
                     userPoints++;
+                    totalGames++; 
                 } else if (userSelection == "paper" && computerSelection == "scissors") {
                     console.log("scissors cuts paper! you lose!");
-                   // return "computer wins";
                     computerPoints++; 
+                    totalGames++; 
                 } else if (userSelection == "paper" && computerSelection == "rock") {
                     console.log("paper covers rock! you win!");
-                   // return "user wins";
                     userPoints++;
+                    totalGames++; 
                 } else if (userSelection == "scissors" && computerSelection == "rock") {
                     console.log("rock beats scissors! you lose!");
-                   // return "computer wins";
                     computerPoints++; 
+                    totalGames++; 
                 } else if (userSelection == "scissors" && computerSelection == "paper") {
                     console.log("scissors cuts paper! you win!");
-                 //   return "user wins";
                     userPoints++;
+                    totalGames++; 
                 } else console.log("I don't understand... try again!");
             } 
+            
             playRound(computerSelection, userSelection);
 
+            console.log(`computer: ${computerPoints}`);
+            console.log(`your score: ${userPoints}`);
+            }
 
-        console.log(`computer: ${computerPoints}`);
-        console.log(`your score: ${userPoints}`);
-    }
-    }
+            function gameFinalScore() {
+                if (computerPoints > userPoints) {
+                console.log("you lose! goodbye!");
+                } else console.log("congrats, you're smarter than a computer or something!");
+            }
+            gameFinalScore();
+        } 
+    
     game();
+
   </script>
 </body>
 </html>
