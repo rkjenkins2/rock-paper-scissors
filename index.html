@@ -6,73 +6,69 @@
 </head>
 <body>
   <script>
+    function computerPlay() {
+        const gameArray = ["rock", "paper", "scissors"];
+        const randomSelection = gameArray[Math.floor(Math.random() * gameArray.length)];
+        return(randomSelection);
+    }  
+
+    function userPlay() { 
+        let userPrompt = prompt("rock, paper, or scissors?");
+        playerSelection = userPrompt.toLowerCase();
+        return(playerSelection);
+    } 
+    let userPoints = 0; 
+    let computerPoints = 0; 
+
+    function playRound(computerSelection, userSelection) {
+        if (userSelection == computerSelection) {
+            alert("tie!");
+        } else if (userSelection == "rock" && computerSelection == "paper") {
+            alert("paper covers rock! you lose!");
+            computerPoints++; 
+        } else if (userSelection == "rock" && computerSelection == "scissors") {
+            alert("rock beats paper! you win!");
+            userPoints++;
+        } else if (userSelection == "paper" && computerSelection == "scissors") {
+            alert("scissors cuts paper! you lose!"); 
+            computerPoints++; 
+        } else if (userSelection == "paper" && computerSelection == "rock") {
+            alert("paper covers rock! you win!");
+            userPoints++;
+        } else if (userSelection == "scissors" && computerSelection == "rock") {
+            alert("rock beats scissors! you lose!");
+            computerPoints++; 
+        } else if (userSelection == "scissors" && computerSelection == "paper") {
+            alert("scissors cuts paper! you win!");
+            userPoints++;
+        } else alert("I don't understand... try again!");
+    }
+
+    function gameFinalScore() {
+        if (computerPoints > userPoints) {
+        alert (`FINAL SCORE:
+        computer: ${computerPoints}
+        human: ${userPoints} 
+        you lose! goodbye!`);    
+        } else alert(`FINAL SCORE: 
+        computer: ${computerPoints} 
+        human: ${userPoints} 
+        congrats! you won!`);
+    }
+
     function game() {
         let welcomeAlert = alert("ready to play? best 3 out of 5!");
-        let userPoints = 0; 
-        let computerPoints = 0; 
-        let totalGames = 0; 
+
         while (computerPoints < 3 && userPoints < 3) {
-            function computerPlay() {
-                    const gameArray = ["rock", "paper", "scissors"];
-                    const randomSelection = gameArray[Math.floor(Math.random() * gameArray.length)];
-                    return(randomSelection);
-                }  
-            function userPlay() { 
-                let userPrompt = prompt("rock, paper, or scissors?");
-                playerSelection = userPrompt.toLowerCase();
-                return(playerSelection);
-            } 
 
-            const computerSelection = computerPlay(); 
-            const userSelection = userPlay();
-
-            function playRound(computerSelection, userSelection) {
-                if (userSelection == computerSelection) {
-                    alert("tie!");
-                } else if (userSelection == "rock" && computerSelection == "paper") {
-                    alert("paper covers rock! you lose!");
-                    computerPoints++; 
-                    totalGames++; 
-                } else if (userSelection == "rock" && computerSelection == "scissors") {
-                    alert("rock beats paper! you win!");
-                    userPoints++;
-                    totalGames++; 
-                } else if (userSelection == "paper" && computerSelection == "scissors") {
-                    alert("scissors cuts paper! you lose!"); 
-                    computerPoints++; 
-                    totalGames++; 
-                } else if (userSelection == "paper" && computerSelection == "rock") {
-                    alert("paper covers rock! you win!");
-                    userPoints++;
-                    totalGames++; 
-                } else if (userSelection == "scissors" && computerSelection == "rock") {
-                    alert("rock beats scissors! you lose!");
-                    computerPoints++; 
-                    totalGames++; 
-                } else if (userSelection == "scissors" && computerSelection == "paper") {
-                    alert("scissors cuts paper! you win!");
-                    userPoints++;
-                    totalGames++; 
-                } else alert("I don't understand... try again!");
-            } 
-            
-            playRound(computerSelection, userSelection);
-            }
-
-            function gameFinalScore() {
-                if (computerPoints > userPoints) {
-                alert (`FINAL SCORE:
-                computer: ${computerPoints}
-                human: ${userPoints} 
-                you lose! goodbye!`);    
-                } else alert(`FINAL SCORE: 
-                computer: ${computerPoints} 
-                human: ${userPoints} 
-                congrats! you won!`);
+                const computerSelection = computerPlay(); 
+                const userSelection = userPlay(); 
+                
+                playRound(computerSelection, userSelection);
             }
             gameFinalScore();
         } 
-    
+
     game();
 
   </script>
