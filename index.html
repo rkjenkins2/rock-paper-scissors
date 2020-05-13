@@ -7,6 +7,7 @@
 <body>
   <script>
     function game() {
+        let welcomeAlert = alert("ready to play? best 3 out of 5!");
         let userPoints = 0; 
         let computerPoints = 0; 
         let totalGames = 0; 
@@ -27,44 +28,47 @@
 
             function playRound(computerSelection, userSelection) {
                 if (userSelection == computerSelection) {
-                    console.log("it's a tie!"); 
+                    alert("tie!");
                 } else if (userSelection == "rock" && computerSelection == "paper") {
-                    console.log("paper covers rock! you lose!");
+                    alert("paper covers rock! you lose!");
                     computerPoints++; 
                     totalGames++; 
                 } else if (userSelection == "rock" && computerSelection == "scissors") {
-                    console.log("rock beats paper! you win!");
+                    alert("rock beats paper! you win!");
                     userPoints++;
                     totalGames++; 
                 } else if (userSelection == "paper" && computerSelection == "scissors") {
-                    console.log("scissors cuts paper! you lose!");
+                    alert("scissors cuts paper! you lose!"); 
                     computerPoints++; 
                     totalGames++; 
                 } else if (userSelection == "paper" && computerSelection == "rock") {
-                    console.log("paper covers rock! you win!");
+                    alert("paper covers rock! you win!");
                     userPoints++;
                     totalGames++; 
                 } else if (userSelection == "scissors" && computerSelection == "rock") {
-                    console.log("rock beats scissors! you lose!");
+                    alert("rock beats scissors! you lose!");
                     computerPoints++; 
                     totalGames++; 
                 } else if (userSelection == "scissors" && computerSelection == "paper") {
-                    console.log("scissors cuts paper! you win!");
+                    alert("scissors cuts paper! you win!");
                     userPoints++;
                     totalGames++; 
-                } else console.log("I don't understand... try again!");
+                } else alert("I don't understand... try again!");
             } 
             
             playRound(computerSelection, userSelection);
-
-            console.log(`computer: ${computerPoints}`);
-            console.log(`your score: ${userPoints}`);
             }
 
             function gameFinalScore() {
                 if (computerPoints > userPoints) {
-                console.log("you lose! goodbye!");
-                } else console.log("congrats, you're smarter than a computer or something!");
+                alert (`FINAL SCORE:
+                computer: ${computerPoints}
+                human: ${userPoints} 
+                you lose! goodbye!`);    
+                } else alert(`FINAL SCORE: 
+                computer: ${computerPoints} 
+                human: ${userPoints} 
+                congrats! you won!`);
             }
             gameFinalScore();
         } 
